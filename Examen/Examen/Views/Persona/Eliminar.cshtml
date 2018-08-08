@@ -1,0 +1,63 @@
+﻿@model Examen.Models.Persona
+
+
+<h3>Are you sure you want to delete this?</h3>
+
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+<fieldset>
+    <legend>Persona</legend>
+    
+    <div class="editor-label">
+        @Html.LabelFor(model => model.ID)
+    </div>
+    <div class="editor-field">
+        @Html.EditorFor(model => model.ID)
+        @Html.ValidationMessageFor(model => model.ID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Nombre)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Nombre)
+       
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Apellido)
+         
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Apellido)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DPI)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DPI)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Ciudad)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Ciudad)
+    </div>
+
+    <p>
+        <input type="submit" value="Delete" /> |
+       
+    </p>
+</fieldset>
+
+}
+ 
+

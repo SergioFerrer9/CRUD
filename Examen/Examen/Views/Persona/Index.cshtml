@@ -1,0 +1,77 @@
+﻿@using Telerik.Web.Mvc.UI;
+@model IEnumerable<Examen.Models.Persona>
+
+<p>
+    @Html.ActionLink("Create New", "Agregar")
+</p>
+
+@{
+    Html.Telerik().Grid(Model)
+        .Name("MyGrid")
+        .Columns(col =>
+        {
+            col.Bound(o => o.ID).Width(120).Groupable(true);
+            col.Bound(o => o.Nombre).Width(120).Groupable(true);
+            col.Bound(o => o.Apellido).Width(120).Groupable(false);
+            col.Bound(o => o.DPI).Width(120).Groupable(false);
+            col.Bound(o => o.Ciudad).Width(120).Groupable(false);
+        })
+    .Pageable(a => a.PageSize(10))
+    .Groupable()
+    .Sortable()
+    .Filterable()
+    .Render();
+}
+
+@(Html.Telerik().StyleSheetRegistrar().DefaultGroup(group => group.Add("telerik.common.css").Add("telerik.windows7.css").Combined(true).Compress(true)))
+@(Html.Telerik().ScriptRegistrar())
+
+@*<p>
+    @Html.ActionLink("Create New", "Agregar")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Apellido)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DPI)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellido)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DPI)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad)
+        </td>
+        <td>
+            @Html.ActionLink("Modificar", "Modificar", new { id=item.ID, id1=item.Nombre}) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>*@
+

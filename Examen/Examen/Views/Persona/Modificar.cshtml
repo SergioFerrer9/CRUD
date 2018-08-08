@@ -1,0 +1,68 @@
+﻿@model Examen.Models.Persona
+
+@{
+    ViewBag.Title = "Modificar";
+}
+
+<h2>Modificar</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Persona</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ID)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ID)
+            @Html.ValidationMessageFor(model => model.ID)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Nombre)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Nombre)
+            @Html.ValidationMessageFor(model => model.Nombre)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Apellido)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Apellido)
+            @Html.ValidationMessageFor(model => model.Apellido)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.DPI)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.DPI)
+            @Html.ValidationMessageFor(model => model.DPI)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Ciudad)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Ciudad)
+            @Html.ValidationMessageFor(model => model.Ciudad)
+        </div>
+
+        <p>
+            <input type="submit" value="Save" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
