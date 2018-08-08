@@ -15,7 +15,16 @@
             col.Bound(o => o.Apellido).Width(120).Groupable(false);
             col.Bound(o => o.DPI).Width(120).Groupable(false);
             col.Bound(o => o.Ciudad).Width(120).Groupable(false);
+            col.Template(@<td>
+            @Html.ActionLink("Modificar", "Modificar", new { id=item.ID}) |
+            @Html.ActionLink("Eliminar", "Eliminar", new { id=item.ID })
+                </td>);
+            
+            
+            
+            
         })
+    
     .Pageable(a => a.PageSize(10))
     .Groupable()
     .Sortable()
@@ -67,7 +76,7 @@
             @Html.DisplayFor(modelItem => item.Ciudad)
         </td>
         <td>
-            @Html.ActionLink("Modificar", "Modificar", new { id=item.ID, id1=item.Nombre}) |
+            @Html.ActionLink("Modificar", "Modificar", new { id=item.ID}) |
             @Html.ActionLink("Eliminar", "Eliminar", new { id=item.ID })
         </td>
     </tr>

@@ -15,9 +15,15 @@ namespace Examen.Controllers
     public class PersonaController : Controller
     {
 
-
+        /// <summary>
+        /// String de Coneccion a la base de datos.
+        /// </summary>
         String conexion = "Data Source=FISICA\\SQLEXPRESS; Initial Catalog=Base1; Integrated Security=true;";
 
+        /// <summary>
+        /// La funcion Listado obtiene la tabla de las persona.
+        /// </summary>
+        /// <returns>Retorna una lista de tipo persona.</returns>
         public List<Persona> Listado()
         {
 
@@ -49,6 +55,11 @@ namespace Examen.Controllers
 
             return Lista;
         }
+
+        /// <summary>
+        /// Vista para mostrar el Grid en pantalla.
+        /// </summary>
+        /// <returns>retorna una lista de tipo persona.</returns>
         public ActionResult Index() 
         {
             List<Persona> listpersona = new List<Persona>();
@@ -56,6 +67,11 @@ namespace Examen.Controllers
             return View(listpersona);
         }
 
+        /// <summary>
+        /// Metodo Agregar, para insertar a la tabla persona.
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <returns>Retorna el Objeto persona.</returns>
         public ActionResult Agregar(Persona persona) {
          
             try
@@ -84,6 +100,11 @@ namespace Examen.Controllers
 
         }
 
+        /// <summary>
+        /// Metodo para eliminar en la tabla Persona.
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <returns>Retorna el objeto Persona.</returns>
         public ActionResult Eliminar(Persona persona) {
 
             try {
@@ -102,7 +123,11 @@ namespace Examen.Controllers
             return View();
         }
 
-
+        /// <summary>
+        /// Metodo para modificar en la Tabla persona.
+        /// </summary>
+        /// <param name="persona"></param>
+        /// <returns>Retorna el Objeto Persona.</returns>
         public ActionResult Modificar(Persona persona) {
             try {
                 SqlConnection con = new SqlConnection(conexion);
@@ -125,6 +150,29 @@ namespace Examen.Controllers
 
 
             return View();        
+        }
+
+
+        public ActionResult ProcedimientoAlmacenado(Persona persona) 
+        {
+            try
+            {
+
+                SqlConnection con = new SqlConnection(conexion);
+                con.Open();
+                SqlCommand consulta = new SqlCommand("EXEC spr_Eliminar @p0;", con);
+                consulta.Parameters.AddWithValue("@p0", Convert.ToInt32(persona.ID));
+                consulta.ExecuteNonQuery();
+                con.Close();
+            }
+            catch (SqlException ex)
+            {
+
+
+            }
+
+            return View();
+
         }
           
       

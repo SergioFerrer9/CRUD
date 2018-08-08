@@ -739,6 +739,7 @@
     <Content Include="Views\Persona\Eliminar.cshtml" />
     <Content Include="Views\Persona\Agregar.cshtml" />
     <Content Include="Views\Persona\Modificar.cshtml" />
+    <Content Include="Views\Persona\ProcedimientoAlmacenado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
